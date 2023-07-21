@@ -1,0 +1,22 @@
+1. npm i --save @nestjs/passport passport passport-local
+
+2. npm i --save-dev @types/passport-local
+   npm i  @nestjs/mongoose mongoose @nestjs/jwt @nestjs/config bcryptjs class-validator class-transformer
+
+3. nest g module auth
+
+4. nest g controller auth --no-spec
+
+5. nest g service auth --no-spec
+
+6. Schema Created
+
+7. 1)Imports Added in AuthModule -> MongooseModule,PassportModule,JwtModule
+
+8. Jwt_Secret,Jwt_Expires Variables Added In ENV File
+
+9. 2)In Jwtmodule add inject,useFactory inside that secret,signinoptions will be added
+
+10. Next, In AuthService adding signup function in that creating jwt token,saving user _id in that token.
+
+11. Signup,Login DTO Added.
