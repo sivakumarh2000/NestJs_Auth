@@ -1,7 +1,7 @@
 1. npm i --save @nestjs/passport passport passport-local
 
 2. npm i --save-dev @types/passport-local
-   npm i  @nestjs/mongoose mongoose @nestjs/jwt @nestjs/config bcryptjs class-validator class-transformer
+   npm i  @nestjs/mongoose mongoose @nestjs/jwt @nestjs/config bcryptjs class-validator class-transformer passport-jwt
 
 3. nest g module auth
 
