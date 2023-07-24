@@ -39,6 +39,7 @@ export class StudentController {
         return this.studentService.deleteStudent(id)
     }
 
+    @UseGuards(AuthGuard())
     @Get('pagination')
     studentPagination(
         @Query('page', ParseIntPipe) page: number = 1,

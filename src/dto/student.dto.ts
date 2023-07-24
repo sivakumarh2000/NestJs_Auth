@@ -7,11 +7,11 @@ export interface IStudentDTO {
     readonly age: number;
     readonly city: string;
     readonly initial: string;
-    readonly user:User
+    readonly user: User
 }
 
 
-export interface IStudent extends Document{
+export interface IStudent extends Document {
     readonly name: string;
     readonly age: number;
     readonly city: string;
