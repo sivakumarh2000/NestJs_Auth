@@ -1,4 +1,4 @@
-import { Logger, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Logger, NotFoundException } from '@nestjs/common';
 import {
     FilterQuery,
     Model,
@@ -86,6 +86,8 @@ export abstract class AbstractRepository<TDocument extends AbstractDocument> {
         return this.model.find(filterQuery, {}, { lean: true });
     }
 
+
+
     async startTransaction() {
         const session = await this.connection.startSession();
         session.startTransaction();
@@ -105,8 +107,20 @@ export abstract class AbstractRepository<TDocument extends AbstractDocument> {
     }
 
     async pagination(filterQuery: FilterQuery<TDocument>, page: number, limit: number) {
-        // let skip = ((page - 1) * limit)
         const skip = (page - 1) * limit;
-        return await this.model.find().skip(skip).limit(limit).exec()
+
+        const data = await this.model.find({ ...filterQuery }).skip(skip).limit(limit).exec()
+
+        const totalcount = await this.model.countDocuments({ ...filterQuery })
+
+
+        const pagination = {
+            currentpage: Number(page),
+            limit: Number(limit),
+            totalcount,
+            totalpages: Math.ceil(totalcount/limit)
+
+        };
+        return {data, pagination };
     }
 }

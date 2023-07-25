@@ -17,7 +17,6 @@ export class StudentRepository extends AbstractRepository<Student> {
     ) {
         //Passing Up To The Abstract Repository
         super(studnetModel, connection)
-        this.logger.log('hello')
     }
 
 }

@@ -1,4 +1,4 @@
-import { IsPositive } from "class-validator";
+import { IsInt, IsNumber, IsPositive, Min } from "class-validator";
 import { Document } from "mongoose";
 import { User } from "src/schemas/user.schema";
 
@@ -20,8 +20,11 @@ export interface IStudent extends Document {
 
 
 
-export class IPaginationDTO {
-    @IsPositive()
+export class IPaginationDTO {   
+    @IsNumber()
+    @IsInt()
+
     page: number;
-    limit: number
+    limit: number;
+    name: string;
 }
